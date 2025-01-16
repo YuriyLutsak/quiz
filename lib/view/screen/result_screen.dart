@@ -14,18 +14,16 @@ class ResultScreen extends StatelessWidget {
   });
 
   List<Map<String, Object>> getSummaryData() {
-    final List<Map<String, Object>> summary = [];
-
-    for (var i = 0; i < chosenAnswers.length; i++) {
-      summary.add({
+    return List.generate(chosenAnswers.length, (i) {
+      // generate - генерирую, итерируясь (chosenAnswers.length) по длине chosenAnswers
+      // придумываю ключь для каждого поля в моделе/json questions
+      return {
         'questions_index': i,
         'question': questions[i].question,
         'correct_answer': questions[i].answers[0],
         'user_answer': chosenAnswers[i],
-      });
-    }
-
-    return summary;
+      };
+    });
   }
 
   @override
